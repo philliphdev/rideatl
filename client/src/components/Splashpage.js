@@ -5,7 +5,7 @@ class Splashpage extends Component {
     render() {
         return (
             <div className="App">
-                <div className="background-images">
+                <div>
                 <h1>Splash Page</h1>
                 </div>
             </div>
