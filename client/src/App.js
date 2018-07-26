@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Switch, BrowserRouter as Router, Route } from 'react-router-dom'
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
 import Splashpage from './components/Splashpage'
 import Users from './components/Users'
 import User from './components/User'

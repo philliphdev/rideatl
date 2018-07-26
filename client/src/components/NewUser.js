@@ -4,7 +4,7 @@ import axios from "axios";
 
 const src1 ="http://thecatapi.com/api/images/get?format=src&type=gif"
 
-class NewUser extends React.Component {
+class NewUser extends Component {
   constructor(){
     super();
   this.state = {
