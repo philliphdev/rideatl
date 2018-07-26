@@ -86,6 +86,9 @@ class Users extends Component {
             name: '',
             email: '',
             password: '',
+            nickname: '',
+            comments: '',
+            photo_url: ''
         }
         await axios.post(`/api/users`, payload)
             .then((res) => {

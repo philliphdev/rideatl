@@ -33,7 +33,7 @@ class User extends Component {
             photo_url: ''
         }
     }
-    componentDidMount() {
+    componentWillMount() {
         this.getUserInfo()
     }
 
@@ -61,7 +61,7 @@ class User extends Component {
             this.state.user,
             this.props.history.push(`/users/`)
         )
-        this.setState({ user: res.data.user })
+        // this.setState({ user: res.data.user })
 
     }
 
