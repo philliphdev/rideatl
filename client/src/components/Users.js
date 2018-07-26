@@ -99,7 +99,6 @@ class Users extends Component {
 
     render() {
         const listOfUsers = this.state.users.map((user, index) => {
-            console.log('102 ', user)
             return (
                 <Card className="local-card" key={index}>
                     <button
