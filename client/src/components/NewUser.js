@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import { Grid, Form, Header, Image, Button } from "semantic-ui-react";
-import axios from "axios";
+import React, { Component } from "react"
+import { Grid, Form, Header, Image, Button } from "semantic-ui-react"
+import axios from "axios"
+import { Redirect } from 'react-router-dom'
 
 const src1 ="http://thecatapi.com/api/images/get?format=src&type=gif"
 
@@ -34,7 +35,7 @@ class NewUser extends Component {
       axios
       .post("/api/users", user)
       .then(res => {
-        this.props.history.push("/");
+        <Redirect to="/users" />
         console.log(res.data);
       })
       .catch(err => console.log(err));
