@@ -103,7 +103,7 @@ class Rides extends Component {
                 </button>
                     <Link
                         key={ride.id}
-                        to={`/rides`}>
+                        to={`/users/8/rides/${ride.id}`}>
                         <h3 key={ride.id}>Name: {ride.title}</h3>
                     </Link>
                 </Card>

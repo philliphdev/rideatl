@@ -49,12 +49,12 @@ class Users extends Component {
 
     deleteUser = async (user) => {
         axios.delete(`/api/users/${user}`)
-        .then((res) => {
-            this.setState({
-                users: this.state.users
-        })
-        this.getAllUsers()
-    })
+            .then((res) => {
+                this.setState({
+                    users: this.state.users
+                })
+                this.getAllUsers()
+            })
     }
 
     handleChange = (event) => {
@@ -96,7 +96,7 @@ class Users extends Component {
                     isShowing: false,
                     user: clearForm
                 })
-                    this.getAllUsers()
+                this.getAllUsers()
             })
     }
 
@@ -104,6 +104,11 @@ class Users extends Component {
         const listOfUsers = this.state.users.map((user, index) => {
             return (
                 <Card className="local-card" key={index}>
+                    <Link
+                        key={user.id}
+                        to={`/users/${user.id}/rides`}>
+                        <p key={user.id}>Name: {user.name} Rides</p>
+                    </Link>
                     <button
                         type="submit"
                         onClick={() => this.deleteUser(user.id)}>X
@@ -112,33 +117,33 @@ class Users extends Component {
                         key={user.id}
                         to={`/users/${user.id}`}>
                         <h3 key={user.id}>Name: {user.name}</h3>
-                        <img src={user.photo_url} alt="user" />
                     </Link>
+                    <img src={user.photo_url} alt="user" />
                 </Card>
 
             )
         })
         return (
-           
-                <Grid container spacing={24} style={{ padding: 24 }}>
-                    <DivContainer>
-                        <h1>Users</h1>
-                        <Button onClick={this.toggleIsShowing}>
-                            {this.state.isShowing ? "Cancel" : "Add User"}</Button>
-                        {
-                            this.state.isShowing ?
-                                <NewUser
-                                    newUser={this.newUser}
-                                    handleChange={this.handleChange}
-                                    user={this.state.user}
-                                />
-                                : null
-                        }
-                        <Grid container spacing={24} style={{ padding: 24 }}>
-                            {listOfUsers}
-                        </Grid>
-                    </DivContainer>
-                </Grid> 
+
+            <Grid container spacing={24} style={{ padding: 24 }}>
+                <DivContainer>
+                    <h1>Users</h1>
+                    <Button onClick={this.toggleIsShowing}>
+                        {this.state.isShowing ? "Cancel" : "Add User"}</Button>
+                    {
+                        this.state.isShowing ?
+                            <NewUser
+                                newUser={this.newUser}
+                                handleChange={this.handleChange}
+                                user={this.state.user}
+                            />
+                            : null
+                    }
+                    <Grid container spacing={24} style={{ padding: 24 }}>
+                        {listOfUsers}
+                    </Grid>
+                </DivContainer>
+            </Grid>
         )
     }
 }
