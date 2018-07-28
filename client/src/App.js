@@ -21,6 +21,7 @@ class App extends Component {
             <Route exact path="/" component={Splashpage}/>
             <Route exact path="/users" component={Users} />
             <Route exact path="/rides" component={Rides} />
+            <Route exact path="/bikes" component={Bikes} />
             <Route exact path="/users/:userId" component={User} />
             <Route exact path="/users/:userId/rides" component={Rides} />
             <Route exact path="/users/:userId/bikes" component={Bikes} />
