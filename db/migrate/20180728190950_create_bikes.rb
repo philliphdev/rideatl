@@ -9,6 +9,7 @@ class CreateBikes < ActiveRecord::Migration[5.2]
       t.boolean :trade
       t.string :trade_details
       t.string :contact
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

@@ -1,15 +1,6 @@
-User.destroy_all
 Ride.destroy_all
-
-
-north_ga = Ride.new
-north_ga.ride_date = '01-22-2019'
-north_ga.title = "North Georgia"
-north_ga.description = "This will be a quick ride up to Hellen and back"
-north_ga.start_place = "Waffle House on 92"
-north_ga.end_place = "Home"
-north_ga.contact = "George"
-north_ga.save
+Bike.destroy_all
+User.destroy_all
 
 george = User.new
 george.name = "George of Jungle"
@@ -21,6 +12,27 @@ george.photo_url = "http://thecatapi.com/api/images/get?format=src&type=gif"
 
 george.save
 
+north_ga = Ride.new
+north_ga.ride_date = '01-22-2019'
+north_ga.title = "North Georgia"
+north_ga.description = "This will be a quick ride up to Hellen and back"
+north_ga.start_place = "Waffle House on 92"
+north_ga.end_place = "Home"
+north_ga.contact = "George"
+north_ga.user_id = george.id
+north_ga.save
+
+honda = Bike.new
+honda.make = 'Honda'
+honda.model = 'CBR600'
+honda.year = '1991/02/03'
+honda.comments = 'Excelant Wheelie Bike!'
+honda.photo_url = 'https://www.bikepics.com/pics/2015/01/04/bikepics-2716918-984.jpg'
+honda.trade = false
+honda.trade_details = ''
+honda.contact = 'George'
+honda.user_id = george.id
+honda.save
 
 # require_relative './ride_data.rb'
 # require_relative './user_data.rb'

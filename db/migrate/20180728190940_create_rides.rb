@@ -7,6 +7,7 @@ class CreateRides < ActiveRecord::Migration[5.2]
       t.string :start_place
       t.string :end_place
       t.string :contact
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

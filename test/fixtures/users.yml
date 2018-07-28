@@ -7,7 +7,6 @@ one:
   nickname: MyString
   comments: MyString
   photo_url: MyString
-  rides: one
 
 two:
   name: MyString
@@ -16,4 +15,3 @@ two:
   nickname: MyString
   comments: MyString
   photo_url: MyString
-  rides: two

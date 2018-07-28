@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_27_183129) do
+ActiveRecord::Schema.define(version: 2018_07_28_190950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,10 @@ ActiveRecord::Schema.define(version: 2018_07_27_183129) do
     t.boolean "trade"
     t.string "trade_details"
     t.string "contact"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bikes_on_user_id"
   end
 
   create_table "rides", force: :cascade do |t|
@@ -35,8 +37,10 @@ ActiveRecord::Schema.define(version: 2018_07_27_183129) do
     t.string "start_place"
     t.string "end_place"
     t.string "contact"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_rides_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,11 +50,10 @@ ActiveRecord::Schema.define(version: 2018_07_27_183129) do
     t.string "nickname"
     t.string "comments"
     t.string "photo_url"
-    t.bigint "rides_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["rides_id"], name: "index_users_on_rides_id"
   end
 
-  add_foreign_key "users", "rides", column: "rides_id"
+  add_foreign_key "bikes", "users"
+  add_foreign_key "rides", "users"
 end

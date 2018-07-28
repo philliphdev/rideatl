@@ -1,16 +1,17 @@
 class Api::RidesController < ApplicationController
   def index
-    @rides = Ride.all
+    @rides = User.find(params[:user_id]).rides
     render json: @rides
   end
 
   def show
-    @ride = Ride.find(params[:id])
+    @ride = User.find(params[:user_id]).rides.find(params[:id])
     render json: @ride
   end
 
   def create
-    @ride = Ride.create!(ride_params)
+    @user = User.find(params[:user_id])
+    @ride = @user.rides.create!(ride_params)
     render json: @ride
   end
 

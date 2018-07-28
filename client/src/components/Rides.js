@@ -15,9 +15,10 @@ margin: auto;
 
 class Rides extends Component {
     state = {
+        userId: '',
         rides: [],
         ride: {
-            title: '',
+            title: 'Test',
             ride_date: '',
             description: '',
             start_place: '',
@@ -38,8 +39,10 @@ class Rides extends Component {
     }
 
     getAllRides = async () => {
+        const userId = this.props.match.params.userId
+        this.setState({userId})
         try {
-            const res = await axios.get('/api/rides')
+            const res = await axios.get(`/api/users/${userId}/rides`)
             this.setState({ rides: res.data })
         }
         catch (err) {
@@ -83,7 +86,8 @@ class Rides extends Component {
             end_place: '',
             contact: ''
         }
-        await axios.post(`/api/rides`, payload)
+        const userId = this.props.match.params.userId
+        await axios.post(`/api/users/${userId}/rides`, payload)
             .then((res) => {
                 this.setState({
                     isShowing: false,
@@ -103,7 +107,7 @@ class Rides extends Component {
                 </button>
                     <Link
                         key={ride.id}
-                        to={`/users/8/rides/${ride.id}`}>
+                        to={`/users/${this.state.userId}/rides/${ride.id}`}>
                         <h3 key={ride.id}>Name: {ride.title}</h3>
                     </Link>
                 </Card>
@@ -114,7 +118,7 @@ class Rides extends Component {
 
             <Grid container spacing={24} style={{ padding: 24 }}>
                 <DivContainer>
-                    <h1>Rides</h1>
+                    <h1>Rides</h1>             
                     <Button onClick={this.toggleIsShowing}>
                         {this.state.isShowing ? "Cancel" : "Add Ride"}</Button>
                     {
@@ -123,6 +127,7 @@ class Rides extends Component {
                                 newRide={this.newRide}
                                 handleChange={this.handleChange}
                                 ride={this.state.ride}
+                                userId={this.state.userId}
                             />
                             : null
                     }

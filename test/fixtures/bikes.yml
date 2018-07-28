@@ -3,19 +3,21 @@
 one:
   make: MyString
   model: MyString
-  year: 2018-07-27
+  year: 2018-07-28
   comments: MyString
   photo_url: MyString
   trade: false
   trade_details: MyString
   contact: MyString
+  user: one
 
 two:
   make: MyString
   model: MyString
-  year: 2018-07-27
+  year: 2018-07-28
   comments: MyString
   photo_url: MyString
   trade: false
   trade_details: MyString
   contact: MyString
+  user: two

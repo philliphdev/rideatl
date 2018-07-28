@@ -16,24 +16,25 @@ class NewRide extends Component {
     end_place: '',
     contact: ''
 }
-
   this.onChange = this.onChange.bind(this);
   this.onSubmit = this.onSubmit.bind(this)
   }
 
+
   onSubmit (rides) {
     rides.preventDefault();
+    const userId = this.props.userId
       const ride = {
         title: this.state.title,
         ride_date: this.state.ride_date,
         description: this.state.description,
         start_place: this.state.start_place,
         end_place: this.state.end_place,
-        contact: this.state.contact
+        contact: this.state.contact,
+        user_id: userId
       }
-
       axios
-      .post("/api/rides", ride)
+      .post(`/api/users/${userId}/rides`, ride)
       .then(res => {
         <Redirect to="/users" />
         console.log(res.data);
