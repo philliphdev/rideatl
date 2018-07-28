@@ -128,6 +128,7 @@ class User extends Component {
                         </UserForm>
                         <img className="local-img" src={this.state.user.photo_url} alt="User" />
                         <Link to={`/users/${this.state.user.id}/rides`}>View User Rides</Link>
+                        <Link to={`/users/${this.state.user.id}/bikes`}>View User Bikes</Link>
                     </Card>
                 </CenterDiv>
             </div>

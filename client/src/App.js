@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
 import Splashpage from './components/Splashpage'
-import Users from './components/Users'
-import User from './components/User'
-import Rides from './components/Rides'
+import Bike from './components/Bike'
+import Bikes from './components/Bikes'
 import Ride from './components/Ride'
+import Rides from './components/Rides'
+import User from './components/User'
+import Users from './components/Users'
 import './App.css';
 import Navbar from './components/Navbar'
 
@@ -21,7 +23,9 @@ class App extends Component {
             <Route exact path="/rides" component={Rides} />
             <Route exact path="/users/:userId" component={User} />
             <Route exact path="/users/:userId/rides" component={Rides} />
+            <Route exact path="/users/:userId/bikes" component={Bikes} />
             <Route exact path="/users/:userId/rides/:rideId" component={Ride} />
+            <Route exact path="/users/:userId/bikes/:bikeId" component={Bike} />
           </Switch>
           </div>
         </Router>
