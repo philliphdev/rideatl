@@ -92,7 +92,8 @@ class Bikes extends Component {
             trade_details: '',
             contact: ''
         }
-        await axios.post(`/api/bikes`, payload)
+        const userId = this.props.match.params.userId
+        await axios.post(`/api/users/${userId}/bikes`, payload)
             .then((res) => {
                 this.setState({
                     isShowing: false,
@@ -132,6 +133,7 @@ class Bikes extends Component {
                                 newBike={this.newBike}
                                 handleChange={this.handleChange}
                                 bike={this.state.bike}
+                                userId={this.state.userId}
                             />
                             : null
                     }

@@ -24,7 +24,8 @@ class NewBike extends Component {
     }
 
     onSubmit(bikes) {
-        bikes.preventDefault();
+        bikes.preventDefault()
+        const userId = this.props.userId
         const bike = {
             title: this.state.make,
             model: this.state.model,
@@ -33,11 +34,12 @@ class NewBike extends Component {
             photo_url: this.state.photo_url,
             trade: this.state.trade,
             trade_details: this.state.trade_details,
-            contact: this.state.contact
+            contact: this.state.contact,
+            user_id: userId
         }
 
         axios
-            .post("/api/bikes", bike)
+            .post(`/api/users/${userId}/bikes`, bike)
             .then(res => {
                 <Redirect to="/users" />
                 console.log(res.data);

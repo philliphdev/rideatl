@@ -11,7 +11,7 @@ class Api::BikesController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @bike = @user.bike.create!(bike_params)
+    @bike = @user.bikes.create!(bike_params)
     render json: @bike
   end
 
