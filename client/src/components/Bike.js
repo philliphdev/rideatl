@@ -138,7 +138,7 @@ class Bike extends Component {
                             <Button type="submit">Submit</Button>
                         </BikeForm>
 
-                        <Link to={`/bikes`}>View Bikes</Link>
+                        <Link to={`/`}>View Bikes</Link>
                     </Card>
                 </CenterDiv>
             </div>

@@ -15,6 +15,7 @@ margin: auto;
 
 class Bikes extends Component {
     state = {
+        userId: '',
         bikes: [],
         bike: {
             make: '',
@@ -40,8 +41,10 @@ class Bikes extends Component {
     }
 
     getAllBikes = async () => {
+        const userId = this.props.match.params.userId
+        this.setState({userId})
         try {
-            const res = await axios.get('/api/bikes')
+            const res = await axios.get(`/api/users/${userId}/bikes`)
             this.setState({ bikes: res.data })
         }
         catch (err) {
@@ -109,7 +112,7 @@ class Bikes extends Component {
                 </button>
                     <Link
                         key={bike.id}
-                        to={`/users/8/bikes/${bike.id}`}>
+                        to={`/users/${this.state.userId}/bikes/${bike.id}`}>
                         <h3 key={bike.id}>Name: {bike.model}</h3>
                     </Link>
                 </Card>

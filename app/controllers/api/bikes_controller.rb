@@ -1,16 +1,17 @@
 class Api::BikesController < ApplicationController
   def index
-    @bikes = Bike.all
+    @bikes = User.find(params[:user_id]).bikes
     render json: @bikes
   end
 
   def show
-    @bike = Bike.find(params[:id])
+    @bike = User.find(params[:user_id]).bikes.find(params[:id])
     render json: @bike
   end
 
   def create
-    @bike = Bike.create!(bike_params)
+    @user = User.find(params[:user_id])
+    @bike = @user.bike.create!(bike_params)
     render json: @bike
   end
 
