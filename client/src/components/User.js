@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import Card from '@material-ui/core/Card'
 import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
 import Button from "@material-ui/core/Button"
@@ -65,7 +64,7 @@ class User extends Component {
 
     updateUser = async () => {
         const { userId } = this.props.match.params
-        const res = await axios.patch(`/api/users/${userId}`,
+        await axios.patch(`/api/users/${userId}`,
             this.state.user,
             this.props.history.push(`/users/`)
         )
@@ -105,7 +104,7 @@ class User extends Component {
                         </div>
                     </LinkDiv>
                     <div className="local-resource-card ">
-                        <UserForm onSubmit={this.updateUser}>
+                        <UserForm>
                             <label>Name: </label>
                             <input
                                 type="text"
@@ -148,7 +147,7 @@ class User extends Component {
                                 value={this.state.user.photo_url}
                                 onChange={this.handleChange}
                             />
-                            <Button className="btn btn-primary div-padding" type="submit">Update</Button>
+                            <Button className="btn btn-primary div-padding" type="button" onClick={this.updateUser}>Update</Button>
                             <Link to="/users" className="btn btn-secondary local-button-right">CANCEL</Link>
                         </UserForm>
                     </div>

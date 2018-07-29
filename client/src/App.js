@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
 import Splashpage from './components/Splashpage'
 import Bike from './components/Bike'
@@ -7,11 +8,12 @@ import Ride from './components/Ride'
 import Rides from './components/Rides'
 import User from './components/User'
 import Users from './components/Users'
-import './App.css';
 import Navbar from './components/Navbar'
 import styled from 'styled-components'
+import AllRides from './components/AllRides';
+import AllBikes from './components/AllBikes';
 
-const Container = styled.div `
+const Container = styled.div`
 display: flex;
 `
 
@@ -26,8 +28,8 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" component={Splashpage} />
                 <Route exact path="/users" component={Users} />
-                <Route exact path="/rides" component={Rides} />
-                <Route exact path="/bikes" component={Bikes} />
+                <Route exact path="/allrides" component={AllRides} />
+                <Route exact path="/allbikes" component={AllBikes} />
                 <Route exact path="/users/:userId" component={User} />
                 <Route exact path="/users/:userId/rides" component={Rides} />
                 <Route exact path="/users/:userId/bikes" component={Bikes} />

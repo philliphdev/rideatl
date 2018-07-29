@@ -18,7 +18,7 @@ class Rides extends Component {
         userId: '',
         rides: [],
         ride: {
-            title: 'Test',
+            title: '',
             ride_date: '',
             description: '',
             start_place: '',
@@ -101,29 +101,28 @@ class Rides extends Component {
         const listOfRides = this.state.rides.map((ride, index) => {
             return (
                 <Card className="ui grid form-group card text-white bg-primary mb-3  local-resource-card" key={index}>
-                    <div class="card text-white bg-primary mb-3">
-                        <div class="card-header">
+                    <div className="card text-white bg-primary mb-3">
+                        <div className="card-header">
                             <Link
                                 key={ride.id}
                                 to={`/users/${this.state.userId}/rides/${ride.id}`}>
                                 <h3 key={ride.id}>Ride To: {ride.title}</h3>
                             </Link>
                         </div>
-                        <div class="card-body">
+                        <div className="card-body">
                             <h4> </h4>
-                            <p class="card-text">{ride.description}</p>
-                            <ul class="list-group text-white bg-primary">
+                            <p className="card-text">{ride.description}</p>
+                            <ul className="list-group text-white bg-primary">
                                 <li className="text-white bg-primary list-group-item d-flex justify-content-between align-items-center">Date: {ride.ride_date}</li>
                                 <li className="text-white bg-primary list-group-item d-flex justify-content-between align-items-center">Meet at: {ride.start_place}</li>
                                 <li className="text-white bg-primary list-group-item d-flex justify-content-between align-items-center">Return to: {ride.end_place}</li>
                             </ul>
                         </div>
-                        <div class="card-footer text-muted">
+                        <div className="card-footer text-muted">
                             {ride.contact}
                         </div>
                     </div>
                 </Card>
-
             )
         })
 

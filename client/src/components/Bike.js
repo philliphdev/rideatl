@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import Card from '@material-ui/core/Card'
 import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
 import Button from "@material-ui/core/Button"
@@ -20,14 +19,6 @@ const CenterDiv = styled.div`
 margin: auto
 button {
     margin: 5px 0;
-}
-`
-
-const LinkDiv = styled.div`
-display: flex;
-justify-content: space-around;
-i {
-    padding: 0 5px;
 }
 `
 
@@ -69,7 +60,7 @@ class Bike extends Component {
     updateBike = async () => {
         const { userId } = this.props.match.params
         const { bikeId } = this.props.match.params
-        const res = await axios.patch(`/api/users/${userId}/bikes/${bikeId}`,
+        await axios.patch(`/api/users/${userId}/bikes/${bikeId}`,
             this.state.bike,
             this.props.history.push(`/`)
         )
@@ -95,7 +86,7 @@ class Bike extends Component {
                     </button>
                     <h1>Edit Bike</h1>
                     <div className="local-resource-card ">
-                        <BikeForm onSubmit={this.updateBike}>
+                        <BikeForm>
                             <label>Make: </label>
                             <input
                                 type="text"
@@ -145,7 +136,7 @@ class Bike extends Component {
                                 value={this.state.bike.trade_details}
                                 onChange={this.handleChange}
                             />
-                            <Button className="btn btn-primary div-padding" type="submit">Submit</Button>
+                            <Button className="btn btn-primary div-padding" type="button" onClick={this.updateBike}>Submit</Button>
                             <Link to="/users" className="btn btn-secondary local-button-right">CANCEL</Link>
                         </BikeForm>
                     </div>

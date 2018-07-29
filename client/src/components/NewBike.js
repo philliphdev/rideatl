@@ -1,7 +1,6 @@
 import React, { Component } from "react"
-import { Grid, Form, Header, Image, Button } from "semantic-ui-react"
+import { Form, Image } from "semantic-ui-react"
 import axios from "axios"
-import { Redirect } from 'react-router-dom'
 
 const src1 = "https://source.unsplash.com/1600x900/?honda,motorcycle"
 
@@ -41,8 +40,7 @@ class NewBike extends Component {
         axios
             .post(`/api/users/${userId}/bikes`, bike)
             .then(res => {
-                <Redirect to="/users" />
-                console.log(res.data);
+                this.props.history.push(`/users/${userId}/bikes`)
             })
             .catch(err => console.log(err));
     }
