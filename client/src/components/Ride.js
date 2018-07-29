@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import Button from "@material-ui/core/Button"
 
 const RideForm = styled.form`
-input[type=text],[type=email],[type=password] {
+input[type=text],[type=email],[type=password],[type=date] {
     width: 100%;
     padding: 5px 2px;
     margin: 5px 0;
@@ -22,6 +22,15 @@ button {
     margin: 5px 0;
 }
 `
+
+const LinkDiv = styled.div`
+display: flex;
+justify-content: space-around;
+i {
+    padding: 0 5px;
+}
+`
+
 class Ride extends Component {
     state = {
         ride: {
@@ -43,7 +52,6 @@ class Ride extends Component {
             const rideId = this.props.match.params.rideId
             const res = await axios.get(`/api/users/${userId}/rides/${rideId}`)
             this.setState({ ride: res.data })
-            console.log('46 ', this.state.ride.title, '45')
         } catch (err) {
             console.log(err)
         }
@@ -79,10 +87,12 @@ class Ride extends Component {
     render() {
         const rideToEdit = (
             <div>
-                <CenterDiv>
-                    <p>Title: </p>
-                    <Card className="local-resource-card">
-                        <button onClick={this.deleteRide}>X</button>
+                <div className="local-resource-card">
+                    <button className="local-button-right" onClick={this.deleteRide}>
+                        <i className="material-icons">delete_forever</i>
+                    </button>
+                    <h1>Edit Ride</h1>
+                    <div className="local-resource-card ">
                         <RideForm onSubmit={this.updateRide}>
                             <label>Title: </label>
                             <input
@@ -100,7 +110,7 @@ class Ride extends Component {
                             />
                             <label>Description: </label>
                             <input
-                                type="textbox"
+                                type="text"
                                 name="description"
                                 value={this.state.ride.description}
                                 onChange={this.handleChange}
@@ -126,18 +136,19 @@ class Ride extends Component {
                                 value={this.state.ride.contact}
                                 onChange={this.handleChange}
                             />
-                            <Button type="submit">Submit</Button>
+                            <Button className="btn btn-primary div-padding" type="submit">Submit</Button>
+                            <Link to="/users" className="btn btn-secondary local-button-right">CANCEL</Link>
                         </RideForm>
-                     
-                        <Link to={`/users`}>View Users</Link>
-                    </Card>
-                </CenterDiv>
+                    </div>
+                </div>
             </div>
         )
         return (
-            <Grid container spacing={24} style={{ padding: 24 }}>
-                {rideToEdit}
-            </Grid>
+            <CenterDiv>
+                <Grid container spacing={24} style={{ padding: 24 }}>
+                    {rideToEdit}
+                </Grid>
+            </CenterDiv>
         )
     }
 }

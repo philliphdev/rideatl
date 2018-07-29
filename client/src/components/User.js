@@ -69,8 +69,6 @@ class User extends Component {
             this.state.user,
             this.props.history.push(`/users/`)
         )
-        // this.setState({ user: res.data.user })
-
     }
 
     deleteUser = async (user) => {

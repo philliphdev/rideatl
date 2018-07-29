@@ -40,7 +40,7 @@ class Rides extends Component {
 
     getAllRides = async () => {
         const userId = this.props.match.params.userId
-        this.setState({userId})
+        this.setState({ userId })
         try {
             const res = await axios.get(`/api/users/${userId}/rides`)
             this.setState({ rides: res.data })
@@ -100,26 +100,39 @@ class Rides extends Component {
     render() {
         const listOfRides = this.state.rides.map((ride, index) => {
             return (
-                <Card className="local-card" key={index}>
-                    <button
-                        type="submit"
-                        onClick={() => this.deleteRide(ride.id)}>X
-                </button>
-                    <Link
-                        key={ride.id}
-                        to={`/users/${this.state.userId}/rides/${ride.id}`}>
-                        <h3 key={ride.id}>Name: {ride.title}</h3>
-                    </Link>
+                <Card className="ui grid form-group card text-white bg-primary mb-3  local-resource-card" key={index}>
+                    <div class="card text-white bg-primary mb-3">
+                        <div class="card-header">
+                            <Link
+                                key={ride.id}
+                                to={`/users/${this.state.userId}/rides/${ride.id}`}>
+                                <h3 key={ride.id}>Ride To: {ride.title}</h3>
+                            </Link>
+                        </div>
+                        <div class="card-body">
+                            <h4> </h4>
+                            <p class="card-text">{ride.description}</p>
+                            <ul class="list-group text-white bg-primary">
+                                <li className="text-white bg-primary list-group-item d-flex justify-content-between align-items-center">Date: {ride.ride_date}</li>
+                                <li className="text-white bg-primary list-group-item d-flex justify-content-between align-items-center">Meet at: {ride.start_place}</li>
+                                <li className="text-white bg-primary list-group-item d-flex justify-content-between align-items-center">Return to: {ride.end_place}</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer text-muted">
+                            {ride.contact}
+                        </div>
+                    </div>
                 </Card>
 
             )
         })
+
         return (
 
             <Grid container spacing={24} style={{ padding: 24 }}>
                 <DivContainer>
-                    <h1>Rides</h1>             
-                    <Button onClick={this.toggleIsShowing}>
+                    <h1>Rides</h1>
+                    <Button className="btn btn-primary btn-sm" onClick={this.toggleIsShowing}>
                         {this.state.isShowing ? "Cancel" : "Add Ride"}</Button>
                     {
                         this.state.isShowing ?
@@ -139,4 +152,4 @@ class Rides extends Component {
         )
     }
 }
-    export default Rides
+export default Rides
