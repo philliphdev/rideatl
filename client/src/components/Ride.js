@@ -52,7 +52,6 @@ class Ride extends Component {
             const rideId = this.props.match.params.rideId
             const res = await axios.get(`/api/users/${userId}/rides/${rideId}`)
             this.setState({ ride: res.data })
-            console.log('46 ', this.state.ride.title, '45')
         } catch (err) {
             console.log(err)
         }
@@ -146,9 +145,9 @@ class Ride extends Component {
         )
         return (
             <CenterDiv>
-            <Grid container spacing={24} style={{ padding: 24 }}>
-                {rideToEdit}
-            </Grid>
+                <Grid container spacing={24} style={{ padding: 24 }}>
+                    {rideToEdit}
+                </Grid>
             </CenterDiv>
         )
     }

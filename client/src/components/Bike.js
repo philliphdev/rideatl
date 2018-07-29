@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import Button from "@material-ui/core/Button"
 
 const BikeForm = styled.form`
-input[type=text],[type=email],[type=password] {
+input[type=text],[type=email],[type=password],[type=date] {
     width: 100%;
     padding: 5px 2px;
     margin: 5px 0;
@@ -22,6 +22,15 @@ button {
     margin: 5px 0;
 }
 `
+
+const LinkDiv = styled.div`
+display: flex;
+justify-content: space-around;
+i {
+    padding: 0 5px;
+}
+`
+
 class Bike extends Component {
     state = {
         bike: {
@@ -45,7 +54,6 @@ class Bike extends Component {
             const bikeId = this.props.match.params.bikeId
             const res = await axios.get(`/api/users/${userId}/bikes/${bikeId}`)
             this.setState({ bike: res.data })
-            console.log('46 ', this.state.bike.model, '45')
         } catch (err) {
             console.log(err)
         }
@@ -81,10 +89,12 @@ class Bike extends Component {
     render() {
         const bikeToEdit = (
             <div>
-                <CenterDiv>
-                    <p>Make: </p>
-                    <Card className="local-resource-card">
-                        <button onClick={this.deleteBike}>X</button>
+                <div className="local-resource-card">
+                    <button className="local-button-right" onClick={this.deleteBike}>
+                        <i className="material-icons">delete_forever</i>
+                    </button>
+                    <h1>Edit Bike</h1>
+                    <div className="local-resource-card ">
                         <BikeForm onSubmit={this.updateBike}>
                             <label>Make: </label>
                             <input
@@ -135,18 +145,19 @@ class Bike extends Component {
                                 value={this.state.bike.trade_details}
                                 onChange={this.handleChange}
                             />
-                            <Button type="submit">Submit</Button>
+                            <Button className="btn btn-primary div-padding" type="submit">Submit</Button>
+                            <Link to="/users" className="btn btn-secondary local-button-right">CANCEL</Link>
                         </BikeForm>
-
-                        <Link to={`/`}>View Bikes</Link>
-                    </Card>
-                </CenterDiv>
+                    </div>
+                </div>
             </div>
         )
         return (
-            <Grid container spacing={24} style={{ padding: 24 }}>
-                {bikeToEdit}
-            </Grid>
+            <CenterDiv>
+                <Grid container spacing={24} style={{ padding: 24 }}>
+                    {bikeToEdit}
+                </Grid>
+            </CenterDiv>
         )
     }
 }
