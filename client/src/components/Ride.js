@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import Card from '@material-ui/core/Card'
 import Grid from '@material-ui/core/Grid'
 import styled from 'styled-components'
 import Button from "@material-ui/core/Button"
@@ -20,14 +19,6 @@ const CenterDiv = styled.div`
 margin: auto
 button {
     margin: 5px 0;
-}
-`
-
-const LinkDiv = styled.div`
-display: flex;
-justify-content: space-around;
-i {
-    padding: 0 5px;
 }
 `
 
@@ -67,7 +58,7 @@ class Ride extends Component {
     updateRide = async () => {
         const { userId } = this.props.match.params
         const { rideId } = this.props.match.params
-        const res = await axios.patch(`/api/users/${userId}/rides/${rideId}`,
+        await axios.patch(`/api/users/${userId}/rides/${rideId}`,
             this.state.ride,
             this.props.history.push(`/`)
         )
@@ -93,50 +84,50 @@ class Ride extends Component {
                     </button>
                     <h1>Edit Ride</h1>
                     <div className="local-resource-card ">
-                        <RideForm onSubmit={this.updateRide}>
+                        <RideForm>
                             <label>Title: </label>
                             <input
                                 type="text"
                                 name="title"
-                                value={this.state.ride.title}
+                                placeholder={this.state.ride.title}
                                 onChange={this.handleChange}
                             />
                             <label>Ride Date: </label>
                             <input
                                 type="date"
                                 name="ride_date"
-                                value={this.state.ride.ride_date}
+                                placeholder={this.state.ride.ride_date}
                                 onChange={this.handleChange}
                             />
                             <label>Description: </label>
                             <input
                                 type="text"
                                 name="description"
-                                value={this.state.ride.description}
+                                placeholder={this.state.ride.description}
                                 onChange={this.handleChange}
                             />
                             <label>Start Place: </label>
                             <input
                                 type="text"
                                 name="start_place"
-                                value={this.state.ride.start_place}
+                                placeholder={this.state.ride.start_place}
                                 onChange={this.handleChange}
                             />
                             <label>End Place: </label>
                             <input
                                 type="text"
                                 name="end_place"
-                                value={this.state.ride.end_place}
+                                placeholder={this.state.ride.end_place}
                                 onChange={this.handleChange}
                             />
                             <label>Contact: </label>
                             <input
                                 type="text"
                                 name="contact"
-                                value={this.state.ride.contact}
+                                placeholder={this.state.ride.contact}
                                 onChange={this.handleChange}
                             />
-                            <Button className="btn btn-primary div-padding" type="submit">Submit</Button>
+                            <Button className="btn btn-primary div-padding" type="button" onClick={this.updateRide}>Submit</Button>
                             <Link to="/users" className="btn btn-secondary local-button-right">CANCEL</Link>
                         </RideForm>
                     </div>

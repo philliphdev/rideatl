@@ -29,8 +29,7 @@ class Splashpage extends Component {
     render() {
         return (
             <div className="App div-container">
-                <div className="ui grid form-group card text-white bg-primary mb-3 local-card">
-                    <h1></h1>
+                <div className="ui grid form-group card text-white  mb-3 local-logon-card"> 
                     {
                         this.state.isShowing ?
                             <NewUser
@@ -42,7 +41,7 @@ class Splashpage extends Component {
                             
                     }
                     <DivPadding>
-                    <Button class="btn btn-info" onClick={this.toggleIsShowing}>
+                    <Button className="btn btn-info" onClick={this.toggleIsShowing}>
                         {this.state.isShowing ? "Cancel" : "Register"}</Button>
                         </DivPadding>
                 </div>

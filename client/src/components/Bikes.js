@@ -12,13 +12,6 @@ display: flex;
 flex-direction: column;
 margin: auto;
 `
-const LinkDiv = styled.div`
-display: flex;
-justify-content: space-around;
-i {
-    padding: 0 5px;
-}
-`
 
 class Bikes extends Component {
     state = {
@@ -121,8 +114,8 @@ class Bikes extends Component {
         const listOfBikes = this.state.bikes.map((bike, index) => {
             return (
                 <Card className="ui grid form-group card text-white bg-primary mb-3 local-resource-card" key={index}>
-                    <div class="card text-white bg-primary mb-3">
-                        <div class="card-header">
+                    <div className="card text-white bg-primary mb-3">
+                        <div className="card-header">
                             <Link
                                 key={bike.id}
                                 to={`/users/${this.state.userId}/bikes/${bike.id}`}>
@@ -132,15 +125,15 @@ class Bikes extends Component {
                                 <img className="local-user-img" src={bike.photo_url} alt="user" />
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div className="card-body">
                             <h4> </h4>
-                            <p class="card-text">{bike.comments}</p>
-                            <ul class="list-group text-white bg-primary">
+                            <p className="card-text">{bike.comments}</p>
+                            <ul className="list-group text-white bg-primary">
                                 <li className="text-white bg-primary list-group-item d-flex justify-content-between align-items-center">Trade {bike.trade}</li>
                                 <li className="text-white bg-primary list-group-item d-flex justify-content-between align-items-center">Trade Details {bike.trade_details}</li>
                             </ul>
                         </div>
-                        <div class="card-footer text-muted">
+                        <div className="card-footer text-muted">
                             {bike.contact}
                         </div>
                     </div>

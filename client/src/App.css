@@ -39,6 +39,7 @@
 }
 
 .local-logon-card {
+  background-color: rgba(68, 109, 155, 0.71);
   max-height: 350px;
   max-width: 350px;
   margin: .5em;

@@ -6,7 +6,6 @@ import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
 import styled from 'styled-components'
 import Button from "@material-ui/core/Button"
-import { Icon } from "semantic-ui-react"
 
 const DivContainer = styled.div`
 display: flex;
@@ -23,6 +22,7 @@ i {
 
 class Users extends Component {
     state = {
+        url: '/',
         users: [],
         user: {
             name: '',
@@ -149,6 +149,7 @@ class Users extends Component {
                                 newUser={this.newUser}
                                 handleChange={this.handleChange}
                                 user={this.state.user}
+                                url={this.state.url}
                             />
                             : null
                     }
