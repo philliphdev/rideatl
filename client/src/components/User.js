@@ -22,6 +22,14 @@ button {
     margin: 5px 0;
 }
 `
+const LinkDiv = styled.div `
+display: flex;
+justify-content: space-around;
+i {
+    padding: 0 5px;
+}
+`
+
 class User extends Component {
     state = {
         user: {
@@ -77,10 +85,28 @@ class User extends Component {
     render() {
         const userToEdit = (
             <div>
-                <CenterDiv>
-                    <p>Name: </p>
-                    <Card className="local-resource-card">
-                        <button onClick={this.deleteUser}>X</button>
+                <div className="local-resource-card">
+                    <button className="local-button-right" onClick={this.deleteUser}>
+                        <i className="material-icons">delete_forever</i>
+                    </button>
+                    <div>
+                        <img className="local-user-img" src={this.state.user.photo_url} alt="User" />
+                        <h3>{this.state.user.name} </h3>
+                    </div>
+                    <LinkDiv>
+                        <div>
+                            <Link to={`/users/${this.state.user.id}/rides`}>
+                            <i className="material-icons">event</i>                    
+                            User Rides
+                            </Link>
+                        </div>
+                        <div>
+                            <Link to={`/users/${this.state.user.id}/bikes`}>
+                            <i className="material-icons">motorcycle</i>
+                            User Bikes</Link>
+                        </div>
+                    </LinkDiv>
+                    <div className="local-resource-card ">
                         <UserForm onSubmit={this.updateUser}>
                             <label>Name: </label>
                             <input
@@ -105,14 +131,14 @@ class User extends Component {
                             />
                             <label>Nickname: </label>
                             <input
-                                type="nickname"
+                                type="text"
                                 name="nickname"
                                 value={this.state.user.nickname}
                                 onChange={this.handleChange}
                             />
                             <label>Comments: </label>
                             <input
-                                type="comments"
+                                type="text"
                                 name="comments"
                                 value={this.state.user.comments}
                                 onChange={this.handleChange}
@@ -124,19 +150,19 @@ class User extends Component {
                                 value={this.state.user.photo_url}
                                 onChange={this.handleChange}
                             />
-                            <Button type="submit">Submit</Button>
+                            <Button className="btn btn-primary div-padding" type="submit">Update</Button>
+                            <Link to="/users" className="btn btn-secondary local-button-right">CANCEL</Link>
                         </UserForm>
-                        <img className="local-img" src={this.state.user.photo_url} alt="User" />
-                        <Link to={`/users/${this.state.user.id}/rides`}>View User Rides</Link>
-                        <Link to={`/users/${this.state.user.id}/bikes`}>View User Bikes</Link>
-                    </Card>
-                </CenterDiv>
+                    </div>
+                </div>
             </div>
         )
         return (
+            <CenterDiv>
             <Grid container spacing={24} style={{ padding: 24 }}>
                 {userToEdit}
             </Grid>
+            </CenterDiv>
         )
     }
 }

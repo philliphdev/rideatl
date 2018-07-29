@@ -47,16 +47,18 @@
 
 .local-new-card {
   max-height: 650px;
- 
   margin: .5em;
   padding: 12px;
 }
 
 .local-resource-card {
-  max-height: 350px;
-  max-width: 400px;
+  max-height: 800px;
+  max-width: 800px;
   margin: .5em;
   padding: 12px;
+  background-color: rgba(68, 109, 155, 0.71);
+  text-align: left;
+  border: solid grey 1px;
 }
 
 .local-user-img {
@@ -77,17 +79,16 @@
  color: red;
  font-size: 18px;
 }
+.local-button-right {
+  color: red;
+  font-size: .8em;
+  float: right;
+ }
 
-.local-resource-card {
-  max-height: 800px;
-  max-width: 800px;
-  margin: .5em;
-  padding: 20px;
-}
+
 
 button:hover {
-  
-    background-color: red;
+  background-color: aqua;
   
 }
 

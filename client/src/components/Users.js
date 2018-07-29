@@ -13,13 +13,6 @@ display: flex;
 flex-direction: column;
 margin: auto;
 `
-// const DisList = styled.div `
-// position: absolute; 
-// will-change: transform; 
-// top: 0px; 
-// left: 0px; 
-// transform: translate3d(0px, 41px, 0px)
-// `
 
 class Users extends Component {
     state = {
