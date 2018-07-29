@@ -6,19 +6,13 @@ import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
 import styled from 'styled-components'
 import Button from "@material-ui/core/Button"
+import { Icon } from "semantic-ui-react"
 
 const DivContainer = styled.div`
 display: flex;
 flex-direction: column;
 margin: auto;
 `
-// const DisList = styled.div `
-// position: absolute; 
-// will-change: transform; 
-// top: 0px; 
-// left: 0px; 
-// transform: translate3d(0px, 41px, 0px)
-// `
 
 class Users extends Component {
     state = {
@@ -110,22 +104,26 @@ class Users extends Component {
     render() {
         const listOfUsers = this.state.users.map((user, index) => {
             return (
-                <Card className="local-card" key={index}>
-                    <Link
-                       
-                        to={`/users/${user.id}/rides`}>
-                        <p>Name: {user.name} Rides</p>
+                <Card className="ui grid form-group card text-white bg-primary mb-3 local-card" key={index}>
+                    <div>
+                    <img className="local-user-img" src={user.photo_url} alt="user" />
+                    </div>
+                    <div>
+                    <Link   
+                       to={`/users/${user.id}/rides`}>
+                        <p> Rides </p>
                     </Link>
-                    <button
+                    </div>
+                    {/* <Button
+                        className="btn btn-danger btn-sm"
                         type="submit"
                         onClick={() => this.deleteUser(user.id)}>X
-                    </button>
+                    </Button> */}
                     <Link
                        
                         to={`/users/${user.id}`}>
-                        <h3>Name: {user.name}</h3>
+                        <h3>{user.name}</h3>
                     </Link>
-                    <img src={user.photo_url} alt="user" />
                 </Card>
 
             )
@@ -135,7 +133,7 @@ class Users extends Component {
             <Grid container spacing={24} style={{ padding: 24 }}>
                 <DivContainer>
                     <h1>Users</h1>
-                    <Button onClick={this.toggleIsShowing}>
+                    <Button className="btn btn-primary btn-sm" onClick={this.toggleIsShowing}>
                         {this.state.isShowing ? "Cancel" : "Add User"}</Button>
                     {
                         this.state.isShowing ?
@@ -155,4 +153,4 @@ class Users extends Component {
     }
 }
 
-export default Users;
+export default Users

@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import '../css/splashpage.css'
 import Logon from './Logon';
-import NewUser from './NewUser';
+import NewUser from './NewUser'
+import styled from 'styled-components'
 import { Button } from '../../node_modules/@material-ui/core';
+
+const DivPadding = styled.div`
+padding: 10px;
+`
 
 class Splashpage extends Component {
     state = {
@@ -23,9 +28,9 @@ class Splashpage extends Component {
     }
     render() {
         return (
-            <div className="App">
-                <div>
-                    <h1>Splash Page</h1>
+            <div className="App div-container">
+                <div className="ui grid form-group card text-white bg-primary mb-3 local-card">
+                    <h1></h1>
                     {
                         this.state.isShowing ?
                             <NewUser
@@ -36,8 +41,10 @@ class Splashpage extends Component {
                             : <Logon />
                             
                     }
-                    <Button  onClick={this.toggleIsShowing}>
+                    <DivPadding>
+                    <Button class="btn btn-info" onClick={this.toggleIsShowing}>
                         {this.state.isShowing ? "Cancel" : "Register"}</Button>
+                        </DivPadding>
                 </div>
             </div>
         );
