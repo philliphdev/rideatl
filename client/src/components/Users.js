@@ -13,6 +13,13 @@ display: flex;
 flex-direction: column;
 margin: auto;
 `
+const LinkDiv = styled.div `
+display: flex;
+justify-content: space-around;
+i {
+    padding: 0 5px;
+}
+`
 
 class Users extends Component {
     state = {
@@ -104,26 +111,27 @@ class Users extends Component {
     render() {
         const listOfUsers = this.state.users.map((user, index) => {
             return (
-                <Card className="ui grid form-group card text-white bg-primary mb-3 local-card" key={index}>
-                    <div>
-                    <img className="local-user-img" src={user.photo_url} alt="user" />
-                    </div>
-                    <div>
-                    <Link   
-                       to={`/users/${user.id}/rides`}>
-                        <p> Rides </p>
-                    </Link>
-                    </div>
-                    {/* <Button
-                        className="btn btn-danger btn-sm"
-                        type="submit"
-                        onClick={() => this.deleteUser(user.id)}>X
-                    </Button> */}
-                    <Link
-                       
+                <Card className="ui grid form-group card text-white bg-primary mb-3 local-card" key={index}>                 
+                    <Link      
                         to={`/users/${user.id}`}>
                         <h3>{user.name}</h3>
                     </Link>
+                    <div>
+                    <img className="local-user-img" src={user.photo_url} alt="user" />
+                    </div>
+                    <LinkDiv>
+                        <div>
+                            <Link to={`/users/${user.id}/rides`}>
+                            <i className="material-icons">event</i>                    
+                            User Rides
+                            </Link>
+                        </div>
+                        <div>
+                            <Link to={`/users/${user.id}/bikes`}>
+                            <i className="material-icons">motorcycle</i>
+                            User Bikes</Link>
+                        </div>
+                    </LinkDiv>
                 </Card>
 
             )
