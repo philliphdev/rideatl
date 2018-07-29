@@ -113,7 +113,7 @@ class Rides extends Component {
                             <h4> </h4>
                             <p class="card-text">{ride.description}</p>
                             <ul class="list-group text-white bg-primary">
-                                <li className="text-white bg-primary list-group-item d-flex justify-content-between align-items-center">Date: {ride.date}</li>
+                                <li className="text-white bg-primary list-group-item d-flex justify-content-between align-items-center">Date: {ride.ride_date}</li>
                                 <li className="text-white bg-primary list-group-item d-flex justify-content-between align-items-center">Meet at: {ride.start_place}</li>
                                 <li className="text-white bg-primary list-group-item d-flex justify-content-between align-items-center">Return to: {ride.end_place}</li>
                             </ul>
