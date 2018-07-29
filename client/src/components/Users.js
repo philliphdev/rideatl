@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
 import styled from 'styled-components'
 import Button from "@material-ui/core/Button"
+import { Icon } from "semantic-ui-react"
 
 const DivContainer = styled.div`
 display: flex;
@@ -110,12 +111,16 @@ class Users extends Component {
     render() {
         const listOfUsers = this.state.users.map((user, index) => {
             return (
-                <Card className="local-card" key={index}>
-                    <Link
-                       
-                        to={`/users/${user.id}/rides`}>
-                        <p>{user.name} Rides</p>
+                <Card className="ui grid form-group card text-white bg-primary mb-3 local-card" key={index}>
+                    <div>
+                    <img className="local-user-img" src={user.photo_url} alt="user" />
+                    </div>
+                    <div>
+                    <Link   
+                       to={`/users/${user.id}/rides`}>
+                        <p> Rides </p>
                     </Link>
+                    </div>
                     {/* <Button
                         className="btn btn-danger btn-sm"
                         type="submit"
@@ -126,7 +131,6 @@ class Users extends Component {
                         to={`/users/${user.id}`}>
                         <h3>{user.name}</h3>
                     </Link>
-                    <img className="local-user-img" src={user.photo_url} alt="user" />
                 </Card>
 
             )

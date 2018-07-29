@@ -45,13 +45,19 @@
   padding: 12px;
 }
 
+.local-new-card {
+  max-height: 650px;
+ 
+  margin: .5em;
+  padding: 12px;
+}
+
 .local-resource-card {
   max-height: 350px;
   max-width: 400px;
   margin: .5em;
   padding: 12px;
 }
-
 
 .local-user-img {
   max-height: 110px;
