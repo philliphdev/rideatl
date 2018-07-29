@@ -36,8 +36,7 @@ class NewRide extends Component {
       axios
       .post(`/api/users/${userId}/rides`, ride)
       .then(res => {
-        <Redirect to="/users" />
-        console.log(res.data);
+        <Redirect to="/" />
       })
       .catch(err => console.log(err));
   }

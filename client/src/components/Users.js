@@ -12,13 +12,13 @@ display: flex;
 flex-direction: column;
 margin: auto;
 `
-const DisList = styled.div `
-position: absolute; 
-will-change: transform; 
-top: 0px; 
-left: 0px; 
-transform: translate3d(0px, 41px, 0px)
-`
+// const DisList = styled.div `
+// position: absolute; 
+// will-change: transform; 
+// top: 0px; 
+// left: 0px; 
+// transform: translate3d(0px, 41px, 0px)
+// `
 
 class Users extends Component {
     state = {
@@ -112,18 +112,18 @@ class Users extends Component {
             return (
                 <Card className="local-card" key={index}>
                     <Link
-                        key={user.id}
+                       
                         to={`/users/${user.id}/rides`}>
-                        <p key={user.id}>Name: {user.name} Rides</p>
+                        <p>Name: {user.name} Rides</p>
                     </Link>
                     <button
                         type="submit"
                         onClick={() => this.deleteUser(user.id)}>X
                     </button>
                     <Link
-                        key={user.id}
+                       
                         to={`/users/${user.id}`}>
-                        <h3 key={user.id}>Name: {user.name}</h3>
+                        <h3>Name: {user.name}</h3>
                     </Link>
                     <img src={user.photo_url} alt="user" />
                 </Card>
