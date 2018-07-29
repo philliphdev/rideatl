@@ -12,6 +12,13 @@ display: flex;
 flex-direction: column;
 margin: auto;
 `
+const LinkDiv = styled.div`
+display: flex;
+justify-content: space-around;
+i {
+    padding: 0 5px;
+}
+`
 
 class Bikes extends Component {
     state = {
@@ -42,7 +49,7 @@ class Bikes extends Component {
 
     getAllBikes = async () => {
         const userId = this.props.match.params.userId
-        this.setState({userId})
+        this.setState({ userId })
         try {
             const res = await axios.get(`/api/users/${userId}/bikes`)
             this.setState({ bikes: res.data })
@@ -53,6 +60,13 @@ class Bikes extends Component {
     }
 
     deleteBike = async (bike) => {
+        axios.delete(`/api/users/${this.state.userId}/bikes/${bike}`)
+            .then((res) => {
+                this.setState({
+                    bikes: this.state.bikes
+                })
+                this.getAllBikes()
+            })
     }
 
     handleChange = (event) => {
@@ -106,18 +120,31 @@ class Bikes extends Component {
     render() {
         const listOfBikes = this.state.bikes.map((bike, index) => {
             return (
-                <Card className="local-card" key={index}>
-                    <button
-                        type="submit"
-                        onClick={() => this.deleteBike(bike.id)}>X
-                </button>
-                    <Link
-                        key={bike.id}
-                        to={`/users/${this.state.userId}/bikes/${bike.id}`}>
-                        <h3 key={bike.id}>Name: {bike.model}</h3>
-                    </Link>
+                <Card className="ui grid form-group card text-white bg-primary mb-3 local-resource-card" key={index}>
+                    <div class="card text-white bg-primary mb-3">
+                        <div class="card-header">
+                            <Link
+                                key={bike.id}
+                                to={`/users/${this.state.userId}/bikes/${bike.id}`}>
+                                <h3 key={bike.id}>{bike.year} - {bike.make} - {bike.model}</h3>
+                            </Link>
+                            <div>
+                                <img className="local-user-img" src={bike.photo_url} alt="user" />
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4> </h4>
+                            <p class="card-text">{bike.comments}</p>
+                            <ul class="list-group text-white bg-primary">
+                                <li className="text-white bg-primary list-group-item d-flex justify-content-between align-items-center">Trade {bike.trade}</li>
+                                <li className="text-white bg-primary list-group-item d-flex justify-content-between align-items-center">Trade Details {bike.trade_details}</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer text-muted">
+                            {bike.contact}
+                        </div>
+                    </div>
                 </Card>
-
             )
         })
         return (
@@ -125,7 +152,7 @@ class Bikes extends Component {
             <Grid container spacing={24} style={{ padding: 24 }}>
                 <DivContainer>
                     <h1>Bikes</h1>
-                    <Button onClick={this.toggleIsShowing}>
+                    <Button className="btn btn-primary btn-sm" onClick={this.toggleIsShowing}>
                         {this.state.isShowing ? "Cancel" : "Add Bike"}</Button>
                     {
                         this.state.isShowing ?
