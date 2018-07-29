@@ -3,7 +3,7 @@ import { Grid, Form, Header, Image, Button } from "semantic-ui-react"
 import axios from "axios"
 import { Redirect } from 'react-router-dom'
 
-const src1 = "http://thecatapi.com/api/images/get?format=src&type=gif"
+const src1 = "https://source.unsplash.com/1600x900/?honda,motorcycle"
 
 class NewBike extends Component {
     constructor() {
@@ -56,76 +56,87 @@ class NewBike extends Component {
     render() {
         return (
             <div className="ui center aligned segment">
-                <div>
-                    <Header as='h1' color='teal'>
-                        New bike
-                    </Header>
-                    <Image src={src1} size='small' circular centered />
-                    <br />
+                <div className="ui grid form-group card text-white bg-primary mb-3 local-new-card ">
+                    <div>
+                        <div className="card-header">
+                            New bike
+                    </div>
+                        <Image src={src1} className="local-user-img" />
+                        <br />
+                    </div>
+                    <div className="ui grid form-group card">
+                        <div className="card-body">
+                            <form onSubmit={this.onSubmit}>
+                                <Form.Group>
+                                    <input
+                                        className="form-control"
+                                        placeholder="Make"
+                                        name="make"
+                                        value={this.state.make}
+                                        onChange={this.onChange}
+                                    />
+                                    <input
+                                        className="form-control"
+                                        placeholder="Model"
+                                        name="model"
+                                        type="text"
+                                        value={this.state.model}
+                                        onChange={this.onChange}
+                                    />
+                                    <input
+                                        className="form-control"
+                                        placeholder="Year"
+                                        name="year"
+                                        type="date"
+                                        value={this.state.year}
+                                        onChange={this.onChange}
+                                    />
+                                    <input
+                                        className="form-control"
+                                        placeholder="Comments"
+                                        name="comments"
+                                        type="text"
+                                        value={this.state.comments}
+                                        onChange={this.onChange}
+                                    />
+                                    <input
+                                        className="form-control"
+                                        placeholder="photo_url"
+                                        name="photo_url"
+                                        type="text"
+                                        value={this.state.photo_url}
+                                        onChange={this.onChange}
+                                    />
+                                    <input
+                                        className="form-control"
+                                        placeholder="trade"
+                                        name="trade"
+                                        type="text"
+                                        value={this.state.trade}
+                                        onChange={this.onChange}
+                                    />
+                                    <input
+                                        className="form-control"
+                                        placeholder="trade_details"
+                                        name="trade_details"
+                                        type="text"
+                                        value={this.state.trade_details}
+                                        onChange={this.onChange}
+                                    />
+                                    <input
+                                        className="form-control"
+                                        placeholder="Contact"
+                                        name="contact"
+                                        type="text"
+                                        value={this.state.contact}
+                                        onChange={this.onChange}
+                                    />
+                                    <button className="btn btn-primary div-padding" content="Submit">Create</button>
+                                </Form.Group>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <Grid>
-                    <Grid centered>
-                        <Form onSubmit={this.onSubmit}>
-                            <Form.Group>
-                                <Form.Input
-                                    placeholder="Make"
-                                    name="make"
-                                    value={this.state.make}
-                                    onChange={this.onChange}
-                                />
-                                <Form.Input
-                                    placeholder="Model"
-                                    name="model"
-                                    type="text"
-                                    value={this.state.model}
-                                    onChange={this.onChange}
-                                />
-                                <Form.Input
-                                    placeholder="Year"
-                                    name="year"
-                                    type="date"
-                                    value={this.state.year}
-                                    onChange={this.onChange}
-                                />
-                                <Form.Input
-                                    placeholder="Comments"
-                                    name="comments"
-                                    type="text"
-                                    value={this.state.comments}
-                                    onChange={this.onChange}
-                                />
-                                <Form.Input
-                                    placeholder="photo_url"
-                                    name="photo_url"
-                                    type="text"
-                                    value={this.state.photo_url}
-                                    onChange={this.onChange}
-                                />
-                                <Form.Input
-                                    placeholder="trade"
-                                    name="trade"
-                                    type="text"
-                                    value={this.state.trade}
-                                    onChange={this.onChange}
-                                />
-                                <Form.Input
-                                    placeholder="trade_details"
-                                    name="trade_details"
-                                    type="text"
-                                    value={this.state.trade_details}
-                                    onChange={this.onChange}
-                                />
-                                <Form.Input
-                                    placeholder="Contact"
-                                    name="contact"
-                                    type="text"
-                                    value={this.state.contact}
-                                    onChange={this.onChange}
-                                />
-                                <Button content="Submit" />
-                            </Form.Group>
-                        </Form></Grid>
-                </Grid>
             </div>
         )
     }
