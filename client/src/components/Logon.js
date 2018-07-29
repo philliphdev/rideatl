@@ -6,7 +6,7 @@ class Logon extends Component {
     render() {
         return (
             <div>
-                <div className="ui grid form-group card text-white bg-primary mb-3">
+                <div className="ui grid form-group card text-white bg-primary mb-3 local-logon-card ">
                     <div className="card-header">Logon</div>
                     <div className="card-body">
                         <div>
@@ -17,7 +17,7 @@ class Logon extends Component {
                             <label className="col-form-label" value="password">Password</label>
                             <input className="form-control" placeholder="password" id="password" type="password" />
                         </div>
-                            <Link to="/users" className="btn btn-primary">GO!</Link>
+                            <Link to="/users" className="btn btn-primary div-padding">GO!</Link>
                     </div>
                 </div>
             </div>

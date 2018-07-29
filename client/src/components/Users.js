@@ -114,18 +114,19 @@ class Users extends Component {
                     <Link
                        
                         to={`/users/${user.id}/rides`}>
-                        <p>Name: {user.name} Rides</p>
+                        <p>{user.name} Rides</p>
                     </Link>
-                    <button
+                    {/* <Button
+                        className="btn btn-danger btn-sm"
                         type="submit"
                         onClick={() => this.deleteUser(user.id)}>X
-                    </button>
+                    </Button> */}
                     <Link
                        
                         to={`/users/${user.id}`}>
-                        <h3>Name: {user.name}</h3>
+                        <h3>{user.name}</h3>
                     </Link>
-                    <img src={user.photo_url} alt="user" />
+                    <img className="local-user-img" src={user.photo_url} alt="user" />
                 </Card>
 
             )
@@ -135,7 +136,7 @@ class Users extends Component {
             <Grid container spacing={24} style={{ padding: 24 }}>
                 <DivContainer>
                     <h1>Users</h1>
-                    <Button onClick={this.toggleIsShowing}>
+                    <Button className="btn btn-primary btn-sm" onClick={this.toggleIsShowing}>
                         {this.state.isShowing ? "Cancel" : "Add User"}</Button>
                     {
                         this.state.isShowing ?
@@ -155,4 +156,4 @@ class Users extends Component {
     }
 }
 
-export default Users;
+export default Users
