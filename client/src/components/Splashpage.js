@@ -29,7 +29,7 @@ class Splashpage extends Component {
     render() {
         return (
             <div className="App div-container">
-                <div className="ui grid form-group card text-white bg-primary mb-3 local-card"> 
+                <div className="ui grid form-group card text-white  mb-3 local-logon-card"> 
                     {
                         this.state.isShowing ?
                             <NewUser
