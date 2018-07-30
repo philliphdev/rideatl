@@ -12,7 +12,7 @@ class NewBike extends Component {
             model: '',
             year: '',
             comments: '',
-            photo_url: '',
+            photo_url: 'https://2yrh403fk8vd1hz9ro2n46dd-wpengine.netdna-ssl.com/wp-content/uploads/2018/02/2018-phillip-island-world-superbike-results-1.jpg',
             trade: '',
             trade_details: '',
             contact: ''
@@ -26,7 +26,7 @@ class NewBike extends Component {
         bikes.preventDefault()
         const userId = this.props.userId
         const bike = {
-            title: this.state.make,
+            make: this.state.make,
             model: this.state.model,
             year: this.state.year,
             comments: this.state.comments,
@@ -40,7 +40,8 @@ class NewBike extends Component {
         axios
             .post(`/api/users/${userId}/bikes`, bike)
             .then(res => {
-                this.props.history.push(`/users/${userId}/bikes`)
+                this.props.getBikes()
+                this.props.toggleNewForm()
             })
             .catch(err => console.log(err));
     }
