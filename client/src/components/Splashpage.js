@@ -4,6 +4,7 @@ import Logon from './Logon';
 import NewUser from './NewUser'
 import styled from 'styled-components'
 import { Button } from '../../node_modules/@material-ui/core';
+import Weather from './Weather';
 
 const DivPadding = styled.div`
 padding: 10px;
@@ -45,6 +46,15 @@ class Splashpage extends Component {
                         {this.state.isShowing ? "Cancel" : "Register"}</Button>
                         </DivPadding>
                 </div>
+                {
+            this.props.modalIsShowing ?
+            <Weather
+            />
+            :
+              null          
+          }
+
+                
             </div>
         );
     }

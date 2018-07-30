@@ -1,21 +1,33 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import Modal from 'react-responsive-modal'
 
 class Navbar extends Component {
   state = {
     zipcode: '',
-    weather: {}
+    weather: {},
+    open: false
   }
 
-  weather = async () => {
-    console.log(this.state.zipcode)
+  onOpenModal = async () => {
     try {
-      const res = await axios.get(`http://api.openweathermap.org/data/2.5/forecast?zip=30066,us&APPID=540c4ac773833f7a0b5e372dfdeba337&units=imperial`)
-      this.setState({ weather: res.data })
+      const res = await axios.get(`http://api.openweathermap.org/data/2.5/weather?zip=${this.state.zipcode},us&APPID=540c4ac773833f7a0b5e372dfdeba337&units=imperial`)
+      this.setState({ weather: res.data, open: true })
     } catch (err) {
       console.log(err)
+      alert("Zip code not found - try again..")
     }
+  };
+
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
+
+  showWeather() {
+
+    alert(this.weather.city.name)
+    this.setState({ modalIsShowing: false })
   }
 
   handleChange = (event) => {
@@ -24,6 +36,7 @@ class Navbar extends Component {
   }
 
   render() {
+    const { open } = this.state
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <Link className="navbar-brand" to="/">Let's Ride</Link>
@@ -54,12 +67,20 @@ class Navbar extends Component {
               value={this.state.zipcode}
               onChange={this.handleChange}
             />
-            <button className="btn btn-secondary my-2 my-sm-0" type="button" onClick={this.weather}>Search</button>
           </form>
+          <button className="btn btn-secondary my-2 my-sm-0" onClick={this.onOpenModal}>Show Weather</button>
+          <Modal open={open} onClose={this.onCloseModal} center>
+            <h2>{this.state.weather.name}</h2>
+            <h5>Current Conditions</h5>
+            <hr />
+            <p>Temp: {this.state.weather.main ? this.state.weather.main.temp : null}</p>
+            <p>Main: {this.state.weather.weather ? this.state.weather.weather[0].main : null}</p>
+            <p>Details: {this.state.weather.weather ? this.state.weather.weather[0].description : null}</p>
+          </Modal>
         </div>
       </nav>
     );
   }
 }
 
-export default Navbar;
+export default Navbar
