@@ -60,7 +60,7 @@ class Ride extends Component {
         const { rideId } = this.props.match.params
         await axios.patch(`/api/users/${userId}/rides/${rideId}`,
             this.state.ride,
-            this.props.history.push(`/`)
+            this.props.history.push(`/users/${userId}/rides/`)
         )
 
     }
@@ -69,7 +69,7 @@ class Ride extends Component {
         const { userId } = this.props.match.params
         const { rideId } = this.props.match.params
         axios.delete(`/api/users/${userId}/rides/${rideId}`)
-        this.props.history.push(`/`)
+        this.props.history.push(`/users`)
     }
     catch(err) {
         console.log(err)

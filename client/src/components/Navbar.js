@@ -1,7 +1,28 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 class Navbar extends Component {
+  state = {
+    zipcode: '',
+    weather: {}
+  }
+
+  weather = async () => {
+    console.log(this.state.zipcode)
+    try {
+      const res = await axios.get(`http://api.openweathermap.org/data/2.5/forecast?zip=30066,us&APPID=540c4ac773833f7a0b5e372dfdeba337&units=imperial`)
+      this.setState({ weather: res.data })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  handleChange = (event) => {
+    const fieldValue = event.target.value
+    this.setState({ zipcode: fieldValue })
+  }
+
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -25,8 +46,15 @@ class Navbar extends Component {
             </li>
           </ul>
           <form className="form-inline my-2 my-lg-0">
-            <input className="form-control mr-sm-2" placeholder="Search" type="text" />
-            <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            <input
+              className="form-control mr-sm-2"
+              placeholder="Zip code"
+              type="text"
+              name="zipcode"
+              value={this.state.zipcode}
+              onChange={this.handleChange}
+            />
+            <button className="btn btn-secondary my-2 my-sm-0" type="button" onClick={this.weather}>Search</button>
           </form>
         </div>
       </nav>

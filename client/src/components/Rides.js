@@ -140,6 +140,8 @@ class Rides extends Component {
                                 handleChange={this.handleChange}
                                 ride={this.state.ride}
                                 userId={this.state.userId}
+                                toggleNewForm={this.toggleIsShowing}
+                                getRides={this.getAllRides}
                             />
                             : null
                     }

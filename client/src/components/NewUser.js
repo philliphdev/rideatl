@@ -34,6 +34,8 @@ class NewUser extends Component {
     axios
       .post("/api/users", user)
       .then(res => {
+        this.props.getUsers()
+        this.props.toggleNewForm()
       })
       .catch(err => console.log(err));
   }
@@ -106,7 +108,7 @@ class NewUser extends Component {
                     onChange={this.onChange}
                   />
                   <div>
-                  <button className="btn btn-primary div-padding" content="Submit">Create</button>
+                  <button className="btn btn-primary div-padding" content="submit">Create</button>
                   </div>
                 </Form.Group>
               </form>

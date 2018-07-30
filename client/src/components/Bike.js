@@ -62,7 +62,7 @@ class Bike extends Component {
         const { bikeId } = this.props.match.params
         await axios.patch(`/api/users/${userId}/bikes/${bikeId}`,
             this.state.bike,
-            this.props.history.push(`/`)
+            this.componentDidMount()
         )
 
     }
@@ -71,7 +71,7 @@ class Bike extends Component {
         const { userId } = this.props.match.params
         const { bikeId } = this.props.match.params
         axios.delete(`/api/users/${userId}/bikes/${bikeId}`)
-        this.props.history.push(`/`)
+        this.props.history.push(`/users`)
     }
     catch(err) {
         console.log(err)
@@ -91,7 +91,7 @@ class Bike extends Component {
                             <input
                                 type="text"
                                 name="make"
-                                value={this.state.bike.make}
+                                defaultValue={this.state.bike.make}
                                 onChange={this.handleChange}
                             />
                             <label>Model: </label>
@@ -136,8 +136,8 @@ class Bike extends Component {
                                 value={this.state.bike.trade_details}
                                 onChange={this.handleChange}
                             />
-                            <Button className="btn btn-primary div-padding" type="button" onClick={this.updateBike}>Submit</Button>
-                            <Link to="/users" className="btn btn-secondary local-button-right">CANCEL</Link>
+                            <Button className="btn btn-primary div-padding" type="submit" onClick={this.updateBike}>Submit</Button>
+                            <Link to="." className="btn btn-secondary local-button-right">CANCEL</Link>
                         </BikeForm>
                     </div>
                 </div>

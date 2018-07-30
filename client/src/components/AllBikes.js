@@ -48,7 +48,7 @@ class AllBikes extends Component {
                 <Card className="ui grid form-group card text-white bg-primary mb-3 local-resource-card" key={index}>
                     <div className="card text-white bg-primary mb-3">
                         <div className="card-header">
-                                <h3 key={bike.id}>{bike.year} - {bike.make} - {bike.model}</h3>
+                                <h3 key={bike.id}>{bike.make} - {bike.model}</h3>
                             <div>
                                 <img className="local-user-img" src={bike.photo_url} alt="user" />
                             </div>

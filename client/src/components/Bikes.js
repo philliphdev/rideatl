@@ -119,10 +119,10 @@ class Bikes extends Component {
                             <Link
                                 key={bike.id}
                                 to={`/users/${this.state.userId}/bikes/${bike.id}`}>
-                                <h3 key={bike.id}>{bike.year} - {bike.make} - {bike.model}</h3>
+                                <h3 key={bike.id}>{bike.make} - {bike.model}</h3>
                             </Link>
                             <div>
-                                <img className="local-user-img" src={bike.photo_url} alt="user" />
+                                <img className="local-user-img" src={bike.photo_url} alt="bike" />
                             </div>
                         </div>
                         <div className="card-body">
@@ -154,6 +154,8 @@ class Bikes extends Component {
                                 handleChange={this.handleChange}
                                 bike={this.state.bike}
                                 userId={this.state.userId}
+                                toggleNewForm={this.toggleIsShowing}
+                                getBikes={this.getAllBikes}
                             />
                             : null
                     }

@@ -35,7 +35,8 @@ class NewRide extends Component {
     axios
       .post(`/api/users/${userId}/rides`, ride)
       .then(res => {
-        this.props.history.push(`/users/${userId}/rides`)
+        this.props.getRides()
+        this.props.toggleNewForm()
       })
       .catch(err => console.log(err));
   }

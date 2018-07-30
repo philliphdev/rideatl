@@ -22,7 +22,7 @@ i {
 
 class Users extends Component {
     state = {
-        url: '/',
+        url: {},
         users: [],
         user: {
             name: '',
@@ -148,11 +148,13 @@ class Users extends Component {
                             <NewUser
                                 newUser={this.newUser}
                                 handleChange={this.handleChange}
-                                user={this.state.user}
-                                url={this.state.url}
+                                user={this.state.user}  
+                                url={this.props.history}
+                                toggleNewForm={this.toggleIsShowing}
+                                getUsers={this.getAllUsers}
                             />
                             : null
-                    }
+                        }
                     <Grid container spacing={24} style={{ padding: 24 }}>
                         {listOfUsers}
                     </Grid>

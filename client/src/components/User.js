@@ -49,7 +49,6 @@ class User extends Component {
             const userId = this.props.match.params.userId
             const res = await axios.get(`/api/users/${userId}`)
             this.setState({ user: res.data })
-            console.log('43 ', this.state.user.name, '45')
         } catch (err) {
             console.log(err)
         }
@@ -84,6 +83,7 @@ class User extends Component {
             <div>
                 <div className="local-resource-card">
                     <button className="local-button-right" onClick={this.deleteUser}>
+                        Delete and Log Off
                         <i className="material-icons">delete_forever</i>
                     </button>
                     <div>
