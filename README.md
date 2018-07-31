@@ -15,8 +15,8 @@ Links to ERD and Wireframes:
 
 - [Project Images](https://github.com/philliphdev/rideatl/tree/master/project_images)
 
-Technologies used in creating this project:
 ___
+### Technologies used in creating this project:
 #### API's:
 - thecatapi for user pictures
 - usplashapi for background images
