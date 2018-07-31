@@ -44,7 +44,7 @@ class Splashpage extends Component {
                     <Button className="btn btn-info" onClick={this.toggleIsShowing}>
                         {this.state.isShowing ? "Cancel" : "Register"}</Button>
                         </DivPadding>
-                </div>
+                </div>    
             </div>
         );
     }

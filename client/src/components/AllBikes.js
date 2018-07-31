@@ -72,7 +72,7 @@ class AllBikes extends Component {
 
             <Grid container spacing={24} style={{ padding: 24 }}>
                 <DivContainer>
-                    <h1>Bikes</h1>
+                    <h1 className="h1-text">Bikes</h1>
                     <Grid container spacing={24} style={{ padding: 24 }}>
                         {listOfBikes}
                     </Grid>

@@ -144,7 +144,7 @@ class Bikes extends Component {
 
             <Grid container spacing={24} style={{ padding: 24 }}>
                 <DivContainer>
-                    <h1>Bikes</h1>
+                    <h1 className="h1-text">Bikes</h1>
                     <Button className="btn btn-primary btn-sm" onClick={this.toggleIsShowing}>
                         {this.state.isShowing ? "Cancel" : "Add Bike"}</Button>
                     {

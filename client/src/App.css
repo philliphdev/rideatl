@@ -115,3 +115,8 @@ display: flex;
 flex-direction: column;
 margin: auto;
 }
+
+.h1-text {
+background-color: rgba(68, 109, 155, 0.71);
+color: white;
+}

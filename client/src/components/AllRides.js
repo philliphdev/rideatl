@@ -65,7 +65,7 @@ class AllRides extends Component {
         return (
             <Grid container spacing={24} style={{ padding: 24 }}>
                 <DivContainer>
-                    <h1>Rides</h1>
+                    <h1 className="h1-text">Rides</h1>
                     <Grid container spacing={24} style={{ padding: 24 }}>
                         {listOfRides}
                     </Grid>
