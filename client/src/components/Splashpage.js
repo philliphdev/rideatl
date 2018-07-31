@@ -26,6 +26,10 @@ class Splashpage extends Component {
             isShowing: !this.state.isShowing
         })
     }
+    newUser = () => {
+        alert('Success! Please Log on')
+    }
+
     render() {
         return (
             <div className="App div-container">
@@ -36,6 +40,8 @@ class Splashpage extends Component {
                                 newUser={this.newUser}
                                 handleChange={this.handleChange}
                                 user={this.state.user}
+                                getUsers={this.newUser}
+                                toggleNewForm={this.toggleIsShowing}
                             />
                             : <Logon />
                             
