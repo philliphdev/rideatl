@@ -13,7 +13,7 @@ Let's Ride App hosted on Heroku:
 
 Links to ERD and Wireframes:
 
-- [Project Images](https://github.com/philliphdev/rideatl/rideatl/tree/master/project%5Fimages)
+- [Project Images](https://github.com/philliphdev/rideatl/tree/master/project_images)
 
 Technologies used in creating this project:
 ___
