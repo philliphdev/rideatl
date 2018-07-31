@@ -65,38 +65,3 @@ suzuki.trade_details = ''
 suzuki.contact = 'Jane'
 suzuki.user_id = jane.id
 suzuki.save
-
-# require_relative './ride_data.rb'
-# require_relative './user_data.rb'
-
-# Ride.destroy_all
-# User.destroy_all
-
-# ride_data = get_ride_data
-# user_data = get_user_data
-
-# ride_data.each_pair do |user_name, rides|
-#   info = user_data[user_name]
-#   puts "HI", user_name, rides
-#   current_user = User.create!({
-#     name:         info[:name],
-#     email:        info[:email],
-#     password:     info[:password],
-#     nickname:     info[:nickname],
-#     comments:     info[:comments],
-#     photo_url:    info[:photo_url],
-#     rides:        info[:rides]
-#   })
-
-#   rides.each do |ride|
-#     Ride.create!({
-#       ride_date:    ride[:ride_date],
-#       title:        ride[:title],
-#       description:  ride[:description],
-#       start_place:  ride[:start_place],
-#       end_place:    ride[:end_place],
-#       contact:      ride[:preview_link],
-#       user:         current_user
-#     })
-#   end
-# end
