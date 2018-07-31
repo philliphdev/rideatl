@@ -108,7 +108,7 @@ class NewBike extends Component {
                                     />
                                     <input
                                         className="form-control"
-                                        placeholder="trade"
+                                        placeholder="Trade true or false?"
                                         name="trade"
                                         type="text"
                                         value={this.state.trade}

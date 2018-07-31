@@ -21,7 +21,7 @@ class Navbar extends Component {
   };
 
   onCloseModal = () => {
-    this.setState({ open: false });
+    this.setState({ open: false, zipcode: '' });
   };
 
   showWeather() {
