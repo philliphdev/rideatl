@@ -7,7 +7,7 @@ class Logon extends Component {
         return (
             <div>
                 <div className="ui grid form-group card text-white bg-primary mb-3 local-logon-card ">
-                    <div className="card-header">Logon</div>
+                    <div className="card-header">Log On</div>
                     <div className="card-body">
                         <div>
                             <label className="col-form-label" value="email">email</label>

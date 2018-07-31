@@ -13,7 +13,7 @@ class NewUser extends Component {
       password: "",
       nickname: "",
       comments: "",
-      photo_url: ""
+      photo_url: "http://thecatapi.com/api/images/get?format=src&type=gif"
     }
 
     this.onChange = this.onChange.bind(this);
@@ -31,13 +31,26 @@ class NewUser extends Component {
       photo_url: this.state.photo_url
     }
 
-    axios
-      .post("/api/users", user)
-      .then(res => {
-        this.props.getUsers()
-        this.props.toggleNewForm()
-      })
-      .catch(err => console.log(err));
+    if (!user.name) {
+      alert('Name cannot be blank')
+    } else {
+      if (!user.email) {
+        alert('email cannot be blank')
+      } else {
+        if (!user.password || user.password.length < 6) {
+          alert('Password must contain at least 6 characters')
+        } else {
+          axios
+            .post("/api/users", user)
+            .then(res => {
+              this.props.getUsers()
+              this.props.toggleNewForm()
+            })
+            .catch(err => console.log(err));
+        }
+      }
+
+    }
   }
 
   onChange(users) {
@@ -71,6 +84,7 @@ class NewUser extends Component {
                   <input
                     className="form-control"
                     placeholder="Email"
+                    type="email"
                     name="email"
                     value={this.state.email}
                     onChange={this.onChange}
@@ -108,7 +122,7 @@ class NewUser extends Component {
                     onChange={this.onChange}
                   />
                   <div>
-                  <button className="btn btn-primary div-padding" content="submit">Create</button>
+                    <button className="btn btn-primary div-padding" content="submit">Create</button>
                   </div>
                 </Form.Group>
               </form>
